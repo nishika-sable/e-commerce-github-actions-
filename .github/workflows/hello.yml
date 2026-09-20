@@ -12,10 +12,10 @@ jobs:
 #name of the jobs
   greet:
 #where the jobs runs 
-  runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest 
 
  #the sequence of the steps the jobs does   
    steps:
    - name: Say hello 
-   run: echo "Hello Dosto" 
+     run: echo "Hello Dosto" 
    
