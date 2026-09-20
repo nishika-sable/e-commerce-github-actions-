@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luma - Modern Essentials</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --surface: #ffffff;
+      --ink: #171717;
+      --muted: #777;
+      --line: #e8e8e3;
+      --accent: #1e4035;
+      --accent-light: #e4eee8;
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* Announcement */
+    .announcement {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 9px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Navigation */
+    header {
+      background: rgba(247, 247, 244, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 850;
+      letter-spacing: -2px;
+    }
+
+    .logo span {
+      color: #8cae9d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 14px;
+    }
+
+    .icon-btn {
+      background: transparent;
+      padding: 8px;
+      font-size: 20px;
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      background: var(--accent);
+      color: white;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      font-size: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 30px 0 70px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      max-width: 580px;
+      margin-bottom: 25px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .hero-image {
+      height: 550px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-image img {
+      height: 100%;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 14px;
+      padding: 13px 16px;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    /* Sections */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Categories */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      position: relative;
+      height: 330px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .category img {
+      height: 100%;
+      transition: transform 0.5s;
+    }
+
+    .category:hover img {
+      transform: scale(1.05);
+    }
+
+    .category::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 35%,
+        rgba(0, 0, 0, 0.62)
+      );
+    }
+
+    .category-content {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      z-index: 1;
+      color: white;
+    }
+
+    .category-content h3 {
+      font-size: 25px;
+    }
+
+    .category-content span {
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    /* Products */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      min-width: 0;
+    }
+
+    .product-image {
+      position: relative;
+      aspect-ratio: 1 / 1.12;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #eee;
+      margin-bottom: 14px;
+    }
+
+    .product-image img {
+      height: 100%;
+      transition: transform 0.4s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: white;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .quick-add {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      background: white;
+      font-size: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .product-name {
+      font-weight: 750;
+      font-size: 14px;
+    }
+
+    .product-type {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Feature */
+    .feature {
+      background: var(--accent-light);
+      border-radius: 28px;
+      padding: 55px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .feature h2 {
+      max-width: 430px;
+      margin-bottom: 18px;
+    }
+
+    .feature p {
+      color: #52665b;
+      max-width: 420px;
+      margin-bottom: 25px;
+    }
+
+    .feature img {
+      height: 330px;
+      border-radius: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: #17251f;
+      color: white;
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    footer p,
+    footer a {
+      color: #b9c4bd;
+      font-size: 13px;
+    }
+
+    footer h4 {
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    footer a {
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #3b4942;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+      color: #b9c4bd;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 130px);
+      background: var(--accent);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 20;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 35px;
+        gap: 35px;
+      }
+
+      .hero-image {
+        height: 430px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 35px;
+      }
+
+      .feature {
+        padding: 30px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .nav {
+        min-height: 65px;
+      }
+
+      .hero {
+        padding-bottom: 35px;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category {
+        height: 240px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Announcement -->
+  <div class="announcement">
+    Free shipping on orders over $75 · Designed for everyday living
+  </div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        luma<span>.</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#categories">Collections</a>
+        <a href="#about">Our Story</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="showToast('Search is coming soon')">
+          ⌕
+        </button>
+
+        <button class="icon-btn" onclick="showToast('Your bag is ready')">
+          ♧
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="container hero">
+
+      <div>
+        <div class="eyebrow">The new everyday</div>
+
+        <h1>
+          Thoughtful pieces. Better living.
+        </h1>
+
+        <p class="hero-copy">
+          Discover considered essentials made to fit beautifully
+          into your everyday routine. Simple forms, quality materials,
+          and timeless design.
+        </p>
+
+        <a href="#shop" class="btn btn-primary">
+          Shop the collection <span>↗</span>
+        </a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=85"
+          alt="Minimal fashion collection"
+        >
+
+        <div class="hero-badge">
+          NEW SEASON · 2026
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Categories -->
+    <section class="container section" id="categories">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Browse by mood</div>
+          <h2>Find your everyday.</h2>
+        </div>
+
+        <p>Made to mix, match, and keep.</p>
+      </div>
+
+      <div class="category-grid">
+
+        <a class="category" href="#shop">
+          <img
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85"
+            alt="Clothing collection"
+          >
+
+          <div class="category-content">
+            <h3>Apparel</h3>
+            <span>Relaxed silhouettes →</span>
+          </div>
+        </a>
+
+        <a class="category" href="#shop">
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+            alt="Lifestyle essentials"
+          >
+
+          <div class="category-content">
+            <h3>Daily rituals</h3>
+            <span>Little moments →</span>
+          </div>
+        </a>
+
+        <a class="category" href="#shop">
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+            alt="Accessories collection"
+          >
+
+          <div class="category-content">
+            <h3>Accessories</h3>
+            <span>Finishing touches →</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="container section" id="shop">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Curated for you</div>
+          <h2>Customer favorites.</h2>
+        </div>
+
+        <a href="#shop" class="btn btn-secondary">
+          View all ↗
+        </a>
+      </div>
+
+      <div class="products">
+
+        <!-- Product 1 -->
+        <article class="product-card">
+
+          <div class="product-image">
+            <span class="tag">Bestseller</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
+              alt="Classic cotton t-shirt"
+            >
+
+            <button
+              class="quick-add"
+              onclick="addToCart('Classic Tee')"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="product-meta">
+            <div>
+              <div class="product-name">Classic Tee</div>
+              <div class="product-type">Organic cotton</div>
+            </div>
+
+            <div class="price">$32</div>
+          </div>
+
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card">
+
+          <div class="product-image">
+            <span class="tag">New</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
+              alt="Minimal sneakers"
+            >
+
+            <button
+              class="quick-add"
+              onclick="addToCart('Everyday Sneakers')"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="product-meta">
+            <div>
+              <div class="product-name">Everyday Sneakers</div>
+              <div class="product-type">Lightweight comfort</div>
+            </div>
+
+            <div class="price">$89</div>
+          </div>
+
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=700&q=85"
+              alt="Minimal leather bag"
+            >
+
+            <button
+              class="quick-add"
+              onclick="addToCart('Soft Carry Bag')"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="product-meta">
+            <div>
+              <div class="product-name">Soft Carry Bag</div>
+              <div class="product-type">Vegan leather</div>
+            </div>
+
+            <div class="price">$64</div>
+          </div>
+
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card">
+
+          <div class="product-image">
+            <span class="tag">Popular</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=85"
+              alt="Minimal wristwatch"
+            >
+
+            <button
+              class="quick-add"
+              onclick="addToCart('Essential Watch')"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="product-meta">
+            <div>
+              <div class="product-name">Essential Watch</div>
+              <div class="product-type">Stainless steel</div>
+            </div>
+
+            <div class="price">$120</div>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="container section" id="about">
+
+      <div class="feature">
+
+        <div>
+          <div class="eyebrow">Less, but better</div>
+
+          <h2>Designed with intention.</h2>
+
+          <p>
+            We believe the things you use every day should feel good,
+            work well, and last beyond a season. Every piece is selected
+            with simplicity and longevity in mind.
+          </p>
+
+          <a href="#shop" class="btn btn-primary">
+            Explore Luma ↗
+          </a>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=85"
+          alt="Calm modern retail interior"
+        >
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="logo">
+            luma<span>.</span>
+          </div>
+
+          <p>
+            Everyday essentials, thoughtfully selected.
+          </p>
+        </div>
+
+        <div>
+          <h4>Shop</h4>
+          <a href="#shop">New arrivals</a>
+          <a href="#shop">Best sellers</a>
+          <a href="#categories">Collections</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="#about">Our story</a>
+          <a href="#">Journal</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div>
+          <h4>Help</h4>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Luma Studio. Demo storefront.</span>
+        <span>Made for everyday moments.</span>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JavaScript -->
+  <script>
+    let cartCount = 0;
+    let toastTimer;
+
+    function addToCart(product) {
+      cartCount++;
+
+      document.getElementById("cartCount").textContent = cartCount;
+
+      showToast(product + " added to your bag");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+  </script>
+
+</body>
+</html>
