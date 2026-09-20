@@ -17,5 +17,5 @@ jobs:
  #the sequence of the steps the jobs does   
     steps:
        - name: Say hello 
-            run: echo "Hello Dosto" 
+         run: echo "Hello Dosto" 
    
