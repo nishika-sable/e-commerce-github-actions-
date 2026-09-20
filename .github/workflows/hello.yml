@@ -19,7 +19,7 @@ jobs:
        - name: Say hello 
          run: echo "Hello Dosto"  
 
-   repo-name: 
+  repo-name: 
      runs-on: ubuntu-latest 
      steps: 
        - name: show repository name 
