@@ -17,5 +17,10 @@ jobs:
  #the sequence of the steps the jobs does   
     steps:
        - name: Say hello 
-         run: echo "Hello Dosto" 
-   
+         run: echo "Hello Dosto"  
+
+   repo-name: 
+     runs-on: ubuntu-latest 
+     steps: 
+       - name: show repository name 
+         run: echo  "The Repo name is ${{ github.event.repository.name }}"   
