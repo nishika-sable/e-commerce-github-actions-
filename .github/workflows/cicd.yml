@@ -1,0 +1,10 @@
+name: CICD demo 
+on:
+   push:
+jobs:
+   code:
+     runs-on: ubuntu-latest 
+         steps: 
+         - name: clone the repository 
+           uses: actions/checkout@v4
+           
