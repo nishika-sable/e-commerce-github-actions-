@@ -5,8 +5,8 @@ jobs:
    code:
      runs-on: ubuntu-latest 
          steps: 
-         - name: clone the repository 
-           uses: actions/checkout@v4
+           - name: clone the repository 
+            uses: actions/checkout@v4
 
    build:
      needs: code 
