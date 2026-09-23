@@ -12,6 +12,6 @@ jobs:
      needs: code 
      runs-on: ubuntu-latest  
       steps:
-             - name: build the code with docker 
-               uses: docker/setup-buildx-action@v3
+          - name: build the code with docker 
+            uses: docker/setup-buildx-action@v3
            
