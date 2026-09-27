@@ -3,14 +3,14 @@ name: Lint Python Code
 on:
   push 
 
-  jobs:
-    code-linter 
-      runs-on: ubuntu-latest
-      steps:
+jobs:
+  code-linter:
+    runs-on: ubuntu-latest
+    steps:
         - name: checkout code 
           uses: actions/checkout@v7
 
         - name: code lint 
           run: ruff check .
-          
+
 
