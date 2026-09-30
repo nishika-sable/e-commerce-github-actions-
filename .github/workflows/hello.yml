@@ -4,8 +4,8 @@
 name:  My first Workflow 
 #when the workflow runs 
 on:
- push:
-   branches: [main]
+ workflow_dispatch:
+   
    
 #what the workflow does 
 jobs:
