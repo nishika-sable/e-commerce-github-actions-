@@ -4,7 +4,10 @@ on:
   push 
 
 jobs:
-  code-linter:
+  code-linter-and-tester:
+  strategy:
+    matrix:
+      python-versions: ["3.11", "3.12", "3.13"]
     runs-on: ubuntu-latest
     steps:
         - name: checkout code 
@@ -13,12 +16,14 @@ jobs:
         - name: set up python 
           uses: actions/setup-python@v4
           with:
-            python-version: '3.11'
+            python-version: ${{ matrix.python-versions}}
 
         - name: install ruff 
           run: pip install ruff
 
         - name: code lint 
           run: ruff check .
-
+        
+        - name: code test 
+          run: pytest 
 
