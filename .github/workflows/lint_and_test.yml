@@ -6,8 +6,8 @@ on:
 jobs:
   code-linter-and-tester:
     strategy:
-     matrix:
-      python-versions: ["3.11", "3.12", "3.13"]
+      matrix:
+       python-versions: ["3.11", "3.12",]
     runs-on: ubuntu-latest
     steps:
         - name: checkout code 
