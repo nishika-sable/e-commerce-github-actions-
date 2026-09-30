@@ -24,6 +24,9 @@ jobs:
         - name: code lint 
           run: ruff check .
         
+        - name: install pytest 
+          run: pip install pytest
+
         - name: code test 
           run: pytest 
 
