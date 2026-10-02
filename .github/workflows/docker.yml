@@ -27,3 +27,4 @@
             with: 
               push: true
               tags: ${{ secrets.DOCKERHUB_USERNAME }}/e-commerce-github-actions:latest 
+              load: true
