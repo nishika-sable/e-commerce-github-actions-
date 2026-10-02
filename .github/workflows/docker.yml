@@ -28,6 +28,6 @@
       
           - name: Build and push
             uses: docker/build-push-action@v7
-            withh:
+            with: 
               push: true
               tags: ${{ secrets.DOCKERHUB_USERNAME }}/e-commerce-github-actions:latest 
