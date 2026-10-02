@@ -1,7 +1,7 @@
 # to check if python code is syntactically correct 
 name: Lint Python Code
 on:
-  push:
+  workflow_ call:
 
 jobs:
   code-linter-and-tester:
