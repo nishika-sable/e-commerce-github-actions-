@@ -1,13 +1,13 @@
 # to check if python code is syntactically correct 
 name: Lint Python Code
 on:
-  push 
+  workflow_dispatch:
 
 jobs:
   code-linter-and-tester:
     strategy:
       matrix:
-       python-versions: ["3.11", "3.12",]
+       python-versions: ["3.11", "3.12"]
     runs-on: ubuntu-latest
     steps:
         - name: checkout code 
