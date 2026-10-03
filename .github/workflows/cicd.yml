@@ -5,11 +5,18 @@ on:
   push: 
 
 jobs: 
+#code 
   code-lint:
     uses: ./.github/workflows/lint_and_test.yml
 
-
-  docker-build:
+#build
+  build-and-push:
     needs: code-lint
     uses: ./.github/workflows/docker.yml
     secrets: inherit
+
+#deploy 
+  deploy:
+   secrets: inherit 
+   needs: [code,build-and-push]
+      uses: ./.github/workflows/cd.yml
