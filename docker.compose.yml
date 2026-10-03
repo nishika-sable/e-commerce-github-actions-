@@ -1,6 +1,6 @@
-service:
+services:
 
-app:
+ app:
     image: nishikasable/e-commerce-github-actions:latest
     ports:
       - "80:80"
