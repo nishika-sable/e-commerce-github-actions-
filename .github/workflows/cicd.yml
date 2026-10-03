@@ -17,6 +17,6 @@ jobs:
 
 #deploy 
   deploy:
-   secrets: inherit 
-   needs: [code,build-and-push]
-      uses: ./.github/workflows/cd.yml
+    secrets: inherit 
+    needs: [code,build-and-push]
+    uses: ./.github/workflows/cd.yml
