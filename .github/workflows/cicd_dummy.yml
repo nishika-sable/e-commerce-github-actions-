@@ -1,0 +1,17 @@
+name: CICD demo 
+on:
+   workflow_dispatch:
+jobs:
+   code:
+      runs-on: ubuntu-latest 
+      steps: 
+           - name: clone the repository 
+             uses: actions/checkout@v4
+
+   build:
+     needs: code 
+     runs-on: ubuntu-latest  
+     steps:
+          - name: build the code with docker 
+            uses: docker/setup-buildx-action@v3
+           
