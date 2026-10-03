@@ -1,6 +1,5 @@
 #Goal: To run the continous integration (CI)  for this project 
 name: CI 
-
 on: 
   push: 
 
