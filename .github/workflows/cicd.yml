@@ -1,6 +1,5 @@
 #Goal: To run the continous integration (CI)  for this project 
 name: CI 
-
 on: 
   push: 
 
@@ -17,5 +16,5 @@ jobs:
 #deploy 
   deploy:
     secrets: inherit 
-    needs: [code,build-and-push]
+    needs: [code-lint,build-and-push]
     uses: ./.github/workflows/cd.yml
