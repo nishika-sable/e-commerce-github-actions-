@@ -4,12 +4,11 @@
    workflow_call:
  jobs: 
    build-and-push:
-      runs-on: self-hosted 
+      runs-on: ubuntu-latest
       steps:
           - name: checkout code 
             uses: actions/checkout@v7
           
-
           - name: docker setup 
             uses: docker/setup-docker-action@v5
 
