@@ -19,7 +19,7 @@ jobs:
   #sast
   sast:
     needs: code-lint
-    uses: .github/workflows/sonar_scan.yml
+    uses: ./.github/workflows/sonar_scan.yml
     secrets: inherit 
 
 
