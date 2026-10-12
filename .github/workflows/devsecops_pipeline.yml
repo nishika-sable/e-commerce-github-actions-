@@ -20,7 +20,7 @@ jobs:
   sast:
     needs: code-lint
     uses: .github/workflows/sonar_scan.yml
-    secret: inherit 
+    secrets: inherit 
 
 
 #build
