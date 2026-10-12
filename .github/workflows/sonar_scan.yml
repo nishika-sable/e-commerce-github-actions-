@@ -1,0 +1,18 @@
+#GOAL: To scan the code for SAST [it checks the source for error without running the application] and code related issues using sonar cube  
+
+name: sonar scan 
+on: 
+  workflow_call:
+
+jobs:
+   sast-scan:
+     runs-on: ubuntu-latest
+     steps:
+      - name: checkout code
+        uses: actions-checkout@v7
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v8.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST:  ${{ secrets.SONAR_HOST}}
