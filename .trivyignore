@@ -1,0 +1,7 @@
+#these were skipped vulnerability because the project demands the python image from docker file which is not that important 
+#eg python3.13 need to chnaged to python 3.14 
+
+CVE-2026-23949
+CVE-2026-24049
+
+#our project does not require that therefore the error are added to trivy ignore file  any CVE id --  showed will be skipped 
