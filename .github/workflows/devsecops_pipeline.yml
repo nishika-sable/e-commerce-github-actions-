@@ -29,9 +29,9 @@ jobs:
 
 
 #build
-  build-and-push:
+  build-and-scan:
     needs: sast
-    uses: ./.github/workflows/docker.yml
+    uses: ./.github/workflows/trivy_scans.yml 
     secrets: inherit
  
 #deploy 
