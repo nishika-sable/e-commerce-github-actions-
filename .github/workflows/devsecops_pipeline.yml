@@ -2,7 +2,7 @@
 
 name: DevSecOps pipeline
 on:
-  push 
+  push:
 
 jobs: 
   
