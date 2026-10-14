@@ -5,10 +5,10 @@ on:
    workflow_call:
 jobs: 
     dependency-scan:
-    strategy:
-      matrix:
-       python-versions: ["3.11", "3.12"]
-        runs-on: ubuntu-latest:
+     strategy:
+       matrix:
+         python-versions: ["3.11", "3.12"]
+           runs-on: ubuntu-latest:
       steps:
       - name: checkout code 
       - uses: actions/checkout@v4
