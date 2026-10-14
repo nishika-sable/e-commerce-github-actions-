@@ -23,19 +23,19 @@ jobs:
     secrets: inherit 
 
   #dependency scan
-  dependency: 
+  dependency-scan: 
     needs: sast 
     uses: ./.github/workflows/dependency_scan.yml 
 
 
 #build
   build-and-scan:
-    needs: sast
+    needs: dependency-scan 
     uses: ./.github/workflows/trivy_scans.yml 
     secrets: inherit
  
 #deploy 
-  deploy:
-    secrets: inherit 
-    needs: [code-lint, sast,build-and-push]
-    uses: ./.github/workflows/cd.yml
+#  deploy:
+#    secrets: inherit 
+ #   needs: [code-lint, sast,build-and-push]
+  #  uses: ./.github/workflows/cd.yml
