@@ -1,4 +1,3 @@
-sonar.projectKey= e-commerce-github-actions 
-sonar.organization=nishika-sable 
+sonar.projectKey= e-commerce-github-actions  
 sonar.projectName=e-commerce-github-actions
 
