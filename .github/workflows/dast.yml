@@ -11,11 +11,12 @@ jobs:
            - name: clone the repository 
              uses: actions/checkout@v4 
 
+          
            - name: Wait for services to be healthy
              run: |
-                   timeout 60s sh -c 'until curl -fsS "http://${{ secrets.EC2_HOST }}:5000" > /dev/null; do
-                      sleep 2
-                    done'
+               timeout 60s bash -c 'until curl -fsS "http://${{ secrets.EC2_HOST }}:5000" > /dev/null; do
+                 sleep 2
+               done'
 
              #scan the runnning application 
            -  name: ZAP Scan
