@@ -17,9 +17,10 @@ jobs:
 
              #scan the runnning application 
            -  name: ZAP Scan
-              uses: zaproxy/action-baseline@v0.15.0
+              uses: zaproxy/action-baseline@v0.15.0 #what happens with this actions these actions hits with different different types of payloads meaning it sends malicous request to the url to check if the app can handle it or not 
               with:
                     token: ${{ secrets.GITHUB_TOKEN }}
                     target: 'http://${{ secrets.EC2_HOST }}:5000'
                     fail_action: false
                     allow_issue_writing: false
+
