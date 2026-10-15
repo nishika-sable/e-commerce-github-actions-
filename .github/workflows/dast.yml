@@ -2,7 +2,7 @@
 
 name: Dast 
 on: 
-   worklow_call:
+   workflow_call:
 
 jobs:
    dast:
